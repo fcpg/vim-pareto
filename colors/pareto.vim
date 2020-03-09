@@ -44,18 +44,9 @@ let s:palette.gray23     = [254, "#e4e4e4"]
 let s:palette.white      = [255, "#eeeeee"]
 let s:palette.fullwhite  = [255, "#ffffff"]
 
-let s:palette.blue       = [33 , "#0087ff"]
-let s:palette.green      = [42 , "#00d787"]
+" let s:palette.offwhite   = [254, "#e8e1d6"]
+let s:palette.offwhite   = [254, "#eeeeee"]
 let s:palette.darkred    = [52 , "#5f0000"]
-let s:palette.darkpurple = [53 , "#5f005f"]
-let s:palette.darkyellow = [58 , "#5f5f00"]
-let s:palette.red        = [124, "#af0000"]
-let s:palette.purple     = [129, "#af00ff"]
-let s:palette.brown      = [130, "#af5f00"]
-let s:palette.orange     = [166, "#d75f00"]
-let s:palette.darkorange = [130, "#af5f00"]
-let s:palette.pink       = [200, "#ff00d7"]
-let s:palette.yellow     = [228, "#ffff87"]
 
 
 " Utilities -------------------------------------------------------------- {{{1
@@ -88,16 +79,17 @@ endfun
 " Composition ------------------------------------------------------------ {{{1
 
 " PRIMITIVES
-call s:HL('Boolean',        s:palette.gray12,    s:palette.black,  'none')
-call s:HL('Character',      s:palette.gray12,    s:palette.black,  'none')
-call s:HL('Constant',       s:palette.gray12,    s:palette.black,  'none')
-call s:HL('Number',         s:palette.gray12,    s:palette.black,  'none')
-call s:HL('String',         s:palette.gray16,    s:palette.gray02, 'none')
+call s:HL('Normal',         s:palette.offwhite,  s:palette.black,  'none')
+call s:HL('Boolean',        s:palette.gray16,    s:palette.black,  'none')
+call s:HL('Character',      s:palette.gray16,    s:palette.black,  'none')
+call s:HL('Constant',       s:palette.gray16,    s:palette.black,  'bold')
+call s:HL('Number',         s:palette.gray16,    s:palette.black,  'none')
+call s:HL('String',         s:palette.gray18,    s:palette.gray03, 'none')
 call s:HL('SpecialChar',    s:palette.fullwhite, s:palette.gray01, 'none')
 
 " COMMENTS
-call s:HL('Comment',        s:palette.gray11,    s:palette.black,  'none')
-call s:HL('SpecialComment', s:palette.gray12,    s:palette.black,  'none')
+call s:HL('Comment',        s:palette.gray12,    s:palette.black,  'none')
+call s:HL('SpecialComment', s:palette.gray14,    s:palette.black,  'none')
 call s:HL('Title',          s:palette.fullwhite, s:palette.black,  'none')
 call s:HL('Todo',           s:palette.fullwhite, s:palette.black,  'bold')
 
@@ -128,7 +120,7 @@ call s:HL('Error',          s:palette.fullwhite, s:palette.gray03, 'bold')
 
 " COMMAND MODE MESSAGES
 call s:HL('ErrorMsg',       s:palette.fullwhite, s:palette.gray03, 'bold')
-call s:HL('WarningMsg',     s:palette.brown,     s:palette.black,  'none')
+call s:HL('WarningMsg',     s:palette.fullwhite, s:palette.black,  'none')
 call s:HL('ModeMsg',        s:palette.white,     s:palette.black,  'none')
 call s:HL('MoreMsg',        s:palette.white,     s:palette.black,  'none')
 
@@ -138,8 +130,8 @@ call s:HL('PreProc',        s:palette.white,     s:palette.black,  'none')
 " BINDINGS
 call s:HL('Identifier',     s:palette.fullwhite, s:palette.black,  'none')
 call s:HL('Function',       s:palette.white,     s:palette.black,  'none')
-call s:HL('Keyword',        s:palette.white,     s:palette.black,  'none')
-call s:HL('Operator',       s:palette.white,     s:palette.black,  'none')
+call s:HL('Keyword',        s:palette.gray16,    s:palette.black,  'none')
+call s:HL('Operator',       s:palette.gray21,    s:palette.black,  'none')
 
 " TYPES
 call s:HL('Type',           s:palette.white,     s:palette.black,  'none')
@@ -149,12 +141,11 @@ call s:HL('Statement',      s:palette.white,     s:palette.black,  'none')
 call s:HL('Label',          s:palette.white,     s:palette.black,  'none')
 
 " MISC
-call s:HL('Normal',         s:palette.gray21,    s:palette.black,  'none')
 call s:HL('Cursor',         s:palette.white,     s:palette.black,  'none', 'gui_macvim')
 call s:HL('Underlined',     s:palette.gray16,    s:palette.gray02, 'none')
 call s:HL('SpecialKey',     s:palette.white,     s:palette.black,  'bold')
 call s:HL('NonText',        s:palette.darkred,   s:palette.black,  'none')
-call s:HL('Directory',      s:palette.orange,    s:palette.black,  'none')
+call s:HL('Directory',      s:palette.fullwhite, s:palette.gray02, 'none')
 
 " FOLD
 call s:HL('FoldColumn',     s:palette.gray10,    s:palette.black,  'none')
@@ -164,7 +155,7 @@ call s:HL('Folded',         s:palette.gray10,    s:palette.black,  'none')
 call s:HL('SignColumn',     s:palette.gray10,    s:palette.black,  'none')
 
 " PARENTHESIS
-call s:HL('MatchParen',     s:palette.orange,    s:palette.black,  'none')
+call s:HL('MatchParen',     s:palette.fullwhite, s:palette.gray02,  'none')
 
 " POPUP
 call s:HL('Pmenu',          s:palette.white,     s:palette.gray09, 'none')
@@ -215,6 +206,7 @@ hi! link   QuickFixLine     Search
 hi! link   VimFuncKey       VimCommand
 hi! link   VimSubstPat      VimString
 hi! link   htmlItalic       Underlined
+hi! link   qfLineNr         Comment
 
 
 " Filetype Specific ------------------------------------------------------ {{{1
